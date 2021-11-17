@@ -43,6 +43,7 @@ namespace Booth.WpfControls.Test
         public MainViewModel()
         {
             MyDialog = new LogonWindow();
+            MyDialog.Password = "First Time";
         }
 
     }
@@ -50,8 +51,20 @@ namespace Booth.WpfControls.Test
     public class LogonWindow : PopupWindow
     {
         public string User { get; set; }
-        public string Password { get; set; }
-        public SecureString SecurePassword { get; set; }
+
+        private string _Password;
+        public string Password
+        {
+            get { return _Password; }
+            set
+            {
+                if (value != _Password)
+                {
+                    _Password = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public LogonWindow()
         {
@@ -62,9 +75,7 @@ namespace Booth.WpfControls.Test
         public void OK()
         {
             User = "";
-            Password = null;
-            SecurePassword = null;
-            OnPropertyChanged("");
+            Password = "OK!!!";
 
             Close();
         }

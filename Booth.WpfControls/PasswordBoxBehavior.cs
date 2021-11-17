@@ -45,7 +45,6 @@ namespace Booth.WpfControls
 
             passwordBox.SelectAll();
         }
-
         
 
         public static string GetPassword(DependencyObject passwordBox)
@@ -60,6 +59,10 @@ namespace Booth.WpfControls
                 
         public static readonly DependencyProperty PasswordProperty =
                     DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxBehavior), new UIPropertyMetadata("", OnSourcePropertyChanged));
+      
+        private static readonly DependencyProperty PasswordChangingProperty =
+                    DependencyProperty.RegisterAttached("PasswordChanging", typeof(bool), typeof(PasswordBoxBehavior), new UIPropertyMetadata(false));
+
 
         private static void OnSourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -67,10 +70,14 @@ namespace Booth.WpfControls
             if (passwordBox == null)
                 return;
 
-            if (e.NewValue == null)
+            var updatingPassword = (bool)passwordBox.GetValue(PasswordChangingProperty);
+            if (!updatingPassword)
             {
                 passwordBox.PasswordChanged -= OnPasswordBoxValueChanged;
-                passwordBox.Password = string.Empty;
+                if (e.NewValue == null)
+                    passwordBox.Password = string.Empty;
+                else
+                    passwordBox.Password = (string)e.NewValue;
                 passwordBox.PasswordChanged += OnPasswordBoxValueChanged;
             }
         }
@@ -81,7 +88,9 @@ namespace Booth.WpfControls
             if (passwordBox == null)
                 return;
 
+            passwordBox.SetValue(PasswordChangingProperty, true);
             SetPassword(passwordBox, passwordBox.Password);
+            passwordBox.SetValue(PasswordChangingProperty, false);
         }
     }
 }

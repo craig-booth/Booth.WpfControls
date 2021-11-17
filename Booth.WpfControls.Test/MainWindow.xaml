@@ -25,7 +25,7 @@
             <controls:FloatingDialog.Content>
                 <StackPanel>
                     <TextBox Text="{Binding MyDialog.User}" controls:TextBoxBehavior.SelectAllTextOnFocus="True"/>
-                    <PasswordBox controls:PasswordBoxBehavior.SelectAllTextOnFocus="True" controls:PasswordBoxBehavior.Password="{Binding MyDialog.Password}" />
+                    <PasswordBox controls:PasswordBoxBehavior.SelectAllTextOnFocus="True" controls:PasswordBoxBehavior.Password="{Binding MyDialog.Password, Mode=TwoWay}" />
                 </StackPanel>
 
             </controls:FloatingDialog.Content>
