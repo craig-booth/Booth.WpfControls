@@ -7,7 +7,6 @@
         xmlns:local="clr-namespace:Booth.WpfControls.Test"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
     <Window.Resources>
         <local:MainViewModel x:Key="ViewModel"/>
     </Window.Resources>
@@ -18,10 +17,10 @@
 
     <Grid>
 
-        <Button Content="Open" Click="Button_Click" Margin="30,10,396.4,270.8"></Button>
+        <Button Content="Open" Click="Button_Click"  Margin="30,10,396.4,270.8"></Button>
 
 
-        <controls:FloatingDialog IsOpen="{Binding MyDialog.IsOpen}" Commands="{Binding MyDialog.Commands}" Height="200" Width="500">
+        <controls:FloatingDialog IsOpen="{Binding MyDialog.IsOpen,Mode=TwoWay}" Commands="{Binding MyDialog.Commands}" Height="200" Width="500">
             <controls:FloatingDialog.Content>
                 <StackPanel>
                     <TextBox Text="{Binding MyDialog.User}" controls:TextBoxBehavior.SelectAllTextOnFocus="True"/>

@@ -11,13 +11,10 @@ namespace Booth.WpfControls
 {
     public class FloatingDialog : ContentControl
     {
-        private DialogAdorner _AdornerDialog;
-        private AdornerLayer _MainWindowAdornerLayer;
+        private DialogAdorner? _AdornerDialog;
+        private AdornerLayer? _MainWindowAdornerLayer;
 
-        private Grid _DialogWindowPart;
-        private ContentPresenter _DialogContentPart;
-        private ItemsControl _ButtonsPart;
-
+        private Grid? _DialogWindowPart;
 
         static FloatingDialog()
         {
@@ -35,14 +32,14 @@ namespace Booth.WpfControls
             if (_AdornerDialog == null)
             {
                 _DialogWindowPart = GetTemplateChild("PART_DialogWindow") as Grid;
-                _DialogContentPart = GetTemplateChild("PART_DialogContent") as ContentPresenter;
-                _ButtonsPart = GetTemplateChild("PART_Buttons") as ItemsControl;
+                if (_DialogWindowPart != null)
+                {
+                    _DialogWindowPart.Visibility = Visibility.Hidden;
 
-                _DialogWindowPart.Visibility = Visibility.Hidden;
-
-                _AdornerDialog = new DialogAdorner(this, _DialogWindowPart);
-                _MainWindowAdornerLayer = AdornerLayer.GetAdornerLayer(this);
-                _MainWindowAdornerLayer.Add(_AdornerDialog);
+                    _AdornerDialog = new DialogAdorner(this, _DialogWindowPart);
+                    _MainWindowAdornerLayer = AdornerLayer.GetAdornerLayer(this);
+                    _MainWindowAdornerLayer.Add(_AdornerDialog);
+                }
             }
 
             base.OnApplyTemplate();

@@ -11,7 +11,7 @@ namespace Booth.WpfControls
     {
         public string Label { get; set; }
         public ICommand Command { get; set; }
-        public object CommandParameter { get; set; }
+        public object? CommandParameter { get; set; }
         public bool IsDefault { get; set; }
         public bool IsCancel { get; set; }
 
@@ -22,7 +22,7 @@ namespace Booth.WpfControls
             IsCancel = false;
         }
 
-        public DialogCommand(string label, ICommand command, object commandParameter)
+        public DialogCommand(string label, ICommand command, object? commandParameter)
         {
             Label = label;
             Command = command;

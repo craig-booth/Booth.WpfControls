@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Security;
-using System.Collections.ObjectModel;
-
-using Booth.WpfControls;
 
 namespace Booth.WpfControls.Test
 {
@@ -32,10 +29,9 @@ namespace Booth.WpfControls.Test
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var vm = (DataContext as MainViewModel);
-            vm.MyDialog.Show();
+            vm?.MyDialog.Show();
         }
     }
-
     public class MainViewModel
     {
         public LogonWindow MyDialog { get; set; }
@@ -50,9 +46,9 @@ namespace Booth.WpfControls.Test
 
     public class LogonWindow : PopupWindow
     {
-        public string User { get; set; }
+        public string User { get; set; } = "";
 
-        private string _Password;
+        private string _Password = "";
         public string Password
         {
             get { return _Password; }
@@ -123,5 +119,4 @@ namespace Booth.WpfControls.Test
         }
 
     }
-
 }

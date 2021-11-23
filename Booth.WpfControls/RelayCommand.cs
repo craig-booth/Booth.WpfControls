@@ -9,7 +9,7 @@ namespace Booth.WpfControls
         private Action _MethodToExecute;
         private Func<bool> _CanExecuteEvaluator;
 
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
@@ -22,24 +22,17 @@ namespace Booth.WpfControls
         }
 
         public RelayCommand(Action methodToExecute)
-            : this(methodToExecute, null)
+            : this(methodToExecute, () => true)
         {
         }
 
-        public bool CanExecute(object Paramater)
+        public bool CanExecute(object? paramater)
         {
-            if (this._CanExecuteEvaluator == null)
-            {
-                return true;
-            }
-            else
-            {
-                bool result = this._CanExecuteEvaluator.Invoke();
-                return result;
-            }
+            bool result = this._CanExecuteEvaluator.Invoke();
+            return result;
         }
 
-        public void Execute(object Parameter)
+        public void Execute(object? Parameter)
         {
             this._MethodToExecute.Invoke();
         }
@@ -50,7 +43,7 @@ namespace Booth.WpfControls
         private Action<T> _MethodToExecute;
         private Func<bool> _CanExecuteEvaluator;
 
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
@@ -63,26 +56,20 @@ namespace Booth.WpfControls
         }
 
         public RelayCommand(Action<T> methodToExecute)
-            : this(methodToExecute, null)
+            : this(methodToExecute, () => true)
         {
         }
 
-        public bool CanExecute(object Paramater)
+        public bool CanExecute(object? paramater)
         {
-            if (this._CanExecuteEvaluator == null)
-            {
-                return true;
-            }
-            else
-            {
-                bool result = this._CanExecuteEvaluator.Invoke();
-                return result;
-            }
+            bool result = this._CanExecuteEvaluator.Invoke();
+            return result;
         }
 
-        public void Execute(object Parameter)
+        public void Execute(object? parameter)
         {
-            this._MethodToExecute.Invoke((T)Parameter);
+            if (parameter != null)
+                this._MethodToExecute.Invoke((T)parameter);
         }
     }
 }
