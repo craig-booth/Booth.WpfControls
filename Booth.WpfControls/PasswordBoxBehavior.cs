@@ -58,7 +58,7 @@ namespace Booth.WpfControls
         }
                 
         public static readonly DependencyProperty PasswordProperty =
-                    DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxBehavior), new UIPropertyMetadata("", OnSourcePropertyChanged));
+                    DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxBehavior), new UIPropertyMetadata(OnSourcePropertyChanged));
       
         private static readonly DependencyProperty PasswordChangingProperty =
                     DependencyProperty.RegisterAttached("PasswordChanging", typeof(bool), typeof(PasswordBoxBehavior), new UIPropertyMetadata(false));
