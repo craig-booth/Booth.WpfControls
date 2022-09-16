@@ -5,7 +5,12 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booth.WpfControls.Test", "Booth.WpfControls.Test\Booth.WpfControls.Test.csproj", "{FF5F797A-668C-437B-8E9E-45882A26407D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booth.WpfControls", "Booth.WpfControls\Booth.WpfControls.csproj", "{3FE006E3-8548-4650-8D09-60941B8B2773}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booth.WpfControls", "Booth.WpfControls\Booth.WpfControls.csproj", "{3FE006E3-8548-4650-8D09-60941B8B2773}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53026681-D594-4070-8F6F-8F5A5239341C}"
+	ProjectSection(SolutionItems) = preProject
+		Jenkinsfile = Jenkinsfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

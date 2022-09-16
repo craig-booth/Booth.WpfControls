@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <Authors>Craig Booth</Authors>
-	<VersionPrefix>1.0.2</VersionPrefix>
+	<VersionPrefix>1.0.3</VersionPrefix>
     <PackageIcon>Booth.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
